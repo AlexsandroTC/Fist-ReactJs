@@ -1,12 +1,12 @@
 ﻿import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-export class FecthProduto extends Component {
-    static displayName = "Produtos"
+export class FetchProduto extends Component {
+    static displayName = "Produtos";
 
     constructor() {
         super();
-        this.state = { produtos: [], loading: true }
+        this.state = { produtos: [], loading: true };
     }
 
     componentDidMount() {
@@ -14,7 +14,7 @@ export class FecthProduto extends Component {
     }
 
     static handleEdit(id) {
-        window.location.href = "/produto/edit/" + id
+        window.location.href = "/produto/edit/" + id;
     }
 
     static handleDelete(id) {
@@ -25,31 +25,6 @@ export class FecthProduto extends Component {
                 window.location.href = "fetch-produto";
                 alert("Produto deletado com sucesso.");
             });
-    }
-
-    render() {
-        let contents = this.state.loading;
-
-        if (contents)
-        {
-            <p><em>Carregando....</em></p>
-        }
-        else
-        {
-            FectProduto.renderProdutos(this.state.produtos);
-        }
-
-        return (
-            <div>
-                <h1 id="produtosTableLabel">Produtos</h1>
-                <p>Tela de listagem de produtos.</p>
-                <p>
-                    <Link to ="/add-produto">Novo Produto</Link>
-                </p>
-
-                {contents}
-            </div>
-        );
     }
 
     static renderProdutos() {
@@ -77,6 +52,25 @@ export class FecthProduto extends Component {
             </table>
         );
     }
+
+    render() {
+        let contents = this.state.loading ? <p><em> Carregando... </em> </p>
+            : FetchProduto.renderProdutos(this.state.produtos);
+
+        return (
+            <div>
+                <h1 id="produtosTableLabel">Produtos</h1>
+                <p>Tela de listagem de produtos.</p>
+                <p>
+                    <Link to ="/add-produto">Novo Produto</Link>
+                </p>
+
+                {contents}
+            </div>
+        );
+    }
+
+
 
     async getProdutoData() {
         const response = await fetch('api/Produtos');
