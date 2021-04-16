@@ -27,7 +27,7 @@ export class FetchProduto extends Component {
             });
     }
 
-    static renderProdutos() {
+    static renderProdutos(produtos) {
         return (
             <table className='table table-striped' aria-labelledby="produtosTableLabel">
                 <thead>
@@ -43,8 +43,10 @@ export class FetchProduto extends Component {
                             <tr key={prod.id}>
                                 <td> {prod.id} </td>
                                 <td> {prod.descricao} </td>
-                                <td> <button className='btn btn-sucess' onClick={(id) => this.handleEdit(prod.id)} >Editar</button></td> &nbsp;
-                                <td> <button className='btn btn-danger' onClick={(id) => this.handleDelete(prod.id)} >Deletar</button> </td>
+                                <td>
+                                    <button className='btn btn-success' onClick={(id) => this.handleEdit(prod.id)} >Editar</button>
+                                    <button className='btn btn-danger' onClick={(id) => this.handleDelete(prod.id)} >Deletar</button>
+                                </td>
                             </tr>
                         )
                     }
