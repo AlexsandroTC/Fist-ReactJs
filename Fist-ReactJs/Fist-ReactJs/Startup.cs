@@ -24,7 +24,7 @@ namespace Fist_ReactJs
         {
             services.AddDbContext<Context>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("AppDatabase"));
+                options.UseSqlite(@"Data Source=C:\teste.db");
             });
 
             services.AddControllersWithViews();

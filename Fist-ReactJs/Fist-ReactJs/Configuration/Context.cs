@@ -9,7 +9,13 @@ namespace Fist_ReactJs.Configuration
 
         public Context(DbContextOptions<Context> options) : base(options)
         {
-            Database.EnsureCreated(); 
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Produto>().HasKey(m => m.ID);
+            base.OnModelCreating(builder);
         }
     }
 }
