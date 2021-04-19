@@ -44,7 +44,7 @@ export class FetchProduto extends Component {
                                 <td> {prod.id} </td>
                                 <td> {prod.descricao} </td>
                                 <td>
-                                    <button className='btn btn-success' onClick={(id) => this.handleEdit(prod.id)} >Editar</button>
+                                    <button className='btn btn-success' onClick={(id) => this.handleEdit(prod.id)} >Editar</button> &nbsp;
                                     <button className='btn btn-danger' onClick={(id) => this.handleDelete(prod.id)} >Deletar</button>
                                 </td>
                             </tr>
@@ -72,12 +72,9 @@ export class FetchProduto extends Component {
         );
     }
 
-
-
     async getProdutoData() {
         const response = await fetch('api/Produtos');
         const data = await response.json();
-
         this.setState({ produtos: data, loading: false });
     }
 }
